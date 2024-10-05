@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นาฬิกาดิจิตอลสไตล์จุด</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        #clock {
+            font-family: 'DotMatrix', sans-serif;
+            font-size: 230px;
+            color: #FFF; /* เปลี่ยนเป็นสีน้ำเงิน */
+            text-shadow: 0 0 10px #ffb300, 0 0 20px #ffb300, 0 0 30px #ffb300, 0 0 40px #ffb300;
+        }
+
+        /* กำหนดรูปแบบฟอนต์ Dot Matrix */
+        @font-face {
+            font-family: 'DotMatrix';
+            src: url('https://fonts.cdnfonts.com/s/17977/digital-7-mono.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock">00:00:00</div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // เรียกฟังก์ชันทันทีเพื่อแสดงเวลา ณ ขณะนั้น
+    </script>
+
+</body>
+</html>
